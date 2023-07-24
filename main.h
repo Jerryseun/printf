@@ -36,5 +36,7 @@ int print_number_base_upper(unsigned int num, unsigned int base);
 int print_hex_upper(va_list args);
 int print_ascii_hex(va_list args);
 int print_pointer(va_list args);
+int print_strev(va_list args);
+int print_rot13(va_list args);
 
 #endif
