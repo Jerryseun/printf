@@ -141,3 +141,22 @@ int print_hex_upper(va_list args)
 
 	return (count);
 }
+
+/**
+ * print_pointer - print memory address of a pointer variable
+ * @args: arguments variable
+ *
+ * Return: count
+*/
+int print_pointer(va_list args)
+{
+	int count = 0;
+
+	void *ptr = va_arg(args, void*);
+
+	count += _putchar('0');
+	count += _putchar('x');
+
+	count += print_number_base_upper((unsigned long)ptr, 16);
+	return (count);
+}

@@ -11,6 +11,7 @@ int main(void)
 {
 	char character;
 	const char* message;
+	char *ptr = "hello";
 
 	_printf("Let's try to printf a simple sentence.\n");
 	_printf("Let's try to %s sentence.\n", "printf a simple");
@@ -31,6 +32,7 @@ int main(void)
 	_printf("Printing a hex_lower: %x\n", 15);
 	_printf("Printing a hex_upper: %X\n", 374746);
 	_printf("Printing a ascii_non: %S\n", "Best\nSchool");
+	_printf("Printing a pointer: %p\n", ptr);
 	_printf("Printing a float: %.4f\n", 3.142);
 	_printf("Printing a float: %5.4f\n", 3.142);
 	return (0);

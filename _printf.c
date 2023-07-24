@@ -21,7 +21,8 @@ int _printf(const char *format, ...)
 		{"b", print_binary},
 		{"u", print_unsigned}, {"o", print_octal},
 		{"x", print_hex_lower}, {"X", print_hex_upper},
-		{"S", print_ascii_hex}
+		{"S", print_ascii_hex},
+		{"p", print_pointer}
 	};
 
 	size_t count = sizeof(funcs) / sizeof(funcs[0]);

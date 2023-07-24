@@ -31,3 +31,4 @@ int print_ascii_hex(va_list args)
 
 	return (count);
 }
+
