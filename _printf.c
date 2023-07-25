@@ -16,37 +16,31 @@ int _printf(const char *format, ...)
 
 	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
 
 	va_start(args, format);
-	while (*format)
+	for (; *format; format++)
 	{
 		if (*format == '%')
 		{
 			format++;
+			if (*format == '%')
+				count += _putchar('%');
+
 			ptr_select = selector(format);
 			if (ptr_select)
 			{
 				printed = ptr_select(args);
-				if (printed < 0)
-				{
-					va_end(args);
-					return (-1);
-				}
-				count += printed;
+				count += (printed < 0) ? (va_end(args), -1) : printed;
 			}
 			else
 			{
-				_putchar('%');
-				_putchar(*format);
-				count += 2;
+				count += _putchar('%') + _putchar(*format);
 			}
 		}
 		else
-		{
-			_putchar(*format);
-			count++;
-		}
-		format++;
+			count += _putchar(*format);
 	}
 	va_end(args);
 	return (count);
