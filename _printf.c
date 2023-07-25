@@ -25,11 +25,13 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+			if (*format == '\0')
+				return (-1);
 			if (*format == '%')
 				count += _putchar('%');
 
 			ptr_select = selector(format);
-			if (ptr_select)
+			if (ptr_select != NULL)
 			{
 				printed = ptr_select(args);
 				count += (printed < 0) ? (va_end(args), -1) : printed;
