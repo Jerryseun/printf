@@ -32,10 +32,7 @@ int print_string(va_list args)
 		str = "(null)";
 
 	while (*str)
-	{
-		_putchar(*str++);
-		count++;
-	}
+		count += _putchar(*str++);
 
 	return (count);
 }
