@@ -13,7 +13,7 @@ int _printf(const char *format, ...);
 int (*selector(const char *s))(va_list args);
 
 /**
- * struct print_struct - A new struct type with 2 members
+ * struct printf_struct - A new struct type with 2 members
  *
  * @c: data type symbols (member 1)
  * @f: pointer function of the various print programs
