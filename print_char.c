@@ -18,22 +18,24 @@ int print_char(va_list args)
 
 /**
  * print_string - print a string
- * @count: number of characters
  * @args: arguments variable
  *
- * Return: count
+ * Return: len
 */
 
 int print_string(va_list args)
 {
 	int count = 0;
-        const char *str = va_arg(args, const char *);
+	const char *str = va_arg(args, const char *);
 
-        while (*str)
+	if (str == NULL)
+		str = "(null)";
+
+	while (*str)
 	{
-                _putchar(*str++);
+		_putchar(*str++);
 		count++;
 	}
 
-        return (count);
+	return (count);
 }
