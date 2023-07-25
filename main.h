@@ -9,6 +9,7 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
+int (*selector(const char *s))(va_list args);
 
 /**
  * struct print_struct - A new struct type with 2 members

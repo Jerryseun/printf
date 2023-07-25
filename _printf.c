@@ -10,56 +10,44 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0;
-
+	int printed, count = 0;
+	int (*ptr_select)(va_list) = NULL;
 	va_list args;
 
-	arr_printf funcs[] = 
-	{
-		{"c", print_char}, {"s", print_string},
-		{"d", print_decimal}, {"i", print_int},
-		{"b", print_binary},
-		{"u", print_unsigned}, {"o", print_octal},
-		{"x", print_hex_lower}, {"X", print_hex_upper},
-		{"S", print_ascii_hex}, {"p", print_pointer},
-		{"r", print_strev},{"R", print_rot13}
-	};
-
-	size_t count = sizeof(funcs) / sizeof(funcs[0]);
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
 
 	va_start(args, format);
-
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-
-			for (i = 0; i < count; i++)
+			ptr_select = selector(format);
+			if (ptr_select)
 			{
-				if (*format == *(funcs[i].c))
+				printed = ptr_select(args);
+				if (printed < 0)
 				{
-					funcs[i].f(args);
-					break;
+					va_end(args);
+					return (-1);
 				}
+				count += printed;
 			}
-
-			if (i == count)
+			else
 			{
 				_putchar('%');
 				_putchar(*format);
+				count += 2;
 			}
-			
 		}
 		else
 		{
 			_putchar(*format);
+			count++;
 		}
-
 		format++;
 	}
-
 	va_end(args);
-	
-	return (*format);
+	return (count);
 }
