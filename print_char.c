@@ -8,10 +8,13 @@
 
 int print_char(va_list args)
 {
-	char character;
+	unsigned char character;
 
 	character = va_arg(args, int);
-	_putchar(character);
+	if (character == '\0')
+		_putchar('-');
+	else
+		_putchar(character);
 
 	return (1);
 }
@@ -20,7 +23,7 @@ int print_char(va_list args)
  * print_string - print a string
  * @args: arguments variable
  *
- * Return: len
+ * Return: count
 */
 
 int print_string(va_list args)
@@ -35,4 +38,18 @@ int print_string(va_list args)
 		count += _putchar(*str++);
 
 	return (count);
+}
+
+/**
+ * print_percent - print a string
+ * @args: arguments variable
+ *
+ * Return: 1
+*/
+
+int print_percent(va_list args __attribute__((unused)))
+{
+	_putchar('%');
+
+	return (1);
 }
