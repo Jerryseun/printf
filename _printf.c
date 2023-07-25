@@ -14,8 +14,7 @@ int _printf(const char *format, ...)
 
 	va_list args;
 
-	arr_printf funcs[] = 
-	{
+	arr_printf funcs[] = {
 		{"c", print_char}, {"s", print_string},
 		{"d", print_decimal}, {"i", print_int},
 		{"b", print_binary},
@@ -26,15 +25,12 @@ int _printf(const char *format, ...)
 	};
 
 	size_t count = sizeof(funcs) / sizeof(funcs[0]);
-
 	va_start(args, format);
-
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-
 			for (i = 0; i < count; i++)
 			{
 				if (*format == *(funcs[i].c))
@@ -43,23 +39,18 @@ int _printf(const char *format, ...)
 					break;
 				}
 			}
-
 			if (i == count)
 			{
 				_putchar('%');
 				_putchar(*format);
 			}
-			
 		}
 		else
 		{
 			_putchar(*format);
 		}
-
 		format++;
 	}
-
 	va_end(args);
-	
 	return (*format);
 }
