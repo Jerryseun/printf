@@ -25,7 +25,12 @@ int main(void)
 
 	_printf("Printing a number: %i, %d\n", "Hello", "World!");
 	_printf("Printing a number: %i, %i, %i, %d, %d, %d\n", 0, 34, -75, 0, 75, -833);
-	_printf("Printing a unsigned: %%\n", 34);
+	_printf("Printing a unsigned: %u\n", 65);
+	_printf("Printing a unsigned: %u\n", -65);
+	_printf("Printing a double double percent: %% b\n", 65);
+	_printf("Printing a percent with invalid spec: %z\n", "hello");
+	_printf("Printing a percent and space with space: % \n", "hello");
+	_printf("Printing a percent only: %\n", "hello");
 	_printf("Printing a unsigned: %u\n", 34);
 	_printf("Printing a binay: %b\n", 34);
 	_printf("Printing a octal: %o\n", 64);

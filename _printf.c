@@ -25,6 +25,11 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+			if (*format < ' ' || *format > '~')
+			{
+				count += _putchar('%') + _putchar(*format);
+				continue;
+			}
 
 			ptr_select = selector(format);
 			if (ptr_select)
@@ -34,12 +39,14 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				count += _putchar('%') + _putchar(*format);
-				return (-1);
+				count += _putchar('%');
+				count += _putchar(*format);
 			}
 		}
 		else
+		{
 			count += _putchar(*format);
+		}
 	}
 	va_end(args);
 	return (count);
