@@ -1,3 +1,14 @@
+#include "main.h"
+
+/**
+ * print_decimal - uses a base of 10 to print numbers
+ * 			signed and unsigned.
+ * @count: integer counts
+ * @args: arguments variable
+ *
+ * Return: count
+*/
+
 int print_decimal(va_list args)
 {
 	int count = 0;
