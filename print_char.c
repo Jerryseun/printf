@@ -32,8 +32,13 @@ int print_string(va_list args)
 	const char *str = va_arg(args, const char *);
 
 	if (str == NULL)
+	{
 		str = "(null)";
-
+	}
+	else if (str[count] < 32 || str[count] >= 127)
+	{	_putchar('\\');
+		_putchar('x');
+	}
 	while (*str)
 		count += _putchar(*str++);
 

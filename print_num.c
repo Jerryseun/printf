@@ -10,14 +10,38 @@
 
 int print_number(int num)
 {
+	int n, check = num % 10, i, j = 1;
 	int count = 1;
 
-	if (num >= 10)
-	{
-		count = 1 + (print_number(num / 10));
-	}
+	num = num / 10;
+	n = num;
 
-	_putchar((num % 10) + '0');
+	if (check < 0)
+	{
+		_putchar('-');
+		n = -n;
+		num = -num;
+		check = -check;
+		count++;
+	}
+	if (n > 0)
+	{
+		while (n / 10 != 0)
+		{
+			j = j * 10;
+			n = n / 10;
+		}
+		n = num;
+		while (j > 0)
+		{
+			i = n / j;
+			_putchar(i + '0');
+			n = n - (i * j);
+			j = j / 10;
+			i++;
+		}
+	}
+	_putchar(check + '0');
 
 	return (count);
 }
