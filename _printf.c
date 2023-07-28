@@ -11,9 +11,8 @@
 int _printf(const char *format, ...)
 {
 	int printed, count = 0;
-	int (*ptr_select)(va_list, flag_t *) = NULL;
+	int (*ptr_select)(va_list) = NULL;
 	va_list args;
-	flag_t flag = {0, 0, 0};
 
 	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
@@ -31,13 +30,11 @@ int _printf(const char *format, ...)
 				count += _putchar('%') + _putchar(*format);
 				continue;
 			}
-			/* handle flags */
-			while (print_flag(*format, &flag))
-				format++;
+
 			ptr_select = selector(format);
 			if (ptr_select)
 			{
-				printed = ptr_select(args, &flag);
+				printed = ptr_select(args);
 				count += (printed < 0) ? (va_end(args), -1) : printed;
 			}
 			else
