@@ -24,6 +24,19 @@ typedef struct printf_struct
 	int (*f)(va_list args);
 } arr_printf;
 
+/**
+ * struct flag - struct for custom flag specifier passed to _printf()
+ * @plus: flag for the '+' character
+ * @space: flag for the ' ' character
+ * @hash: flag for the '#' character
+ */
+typedef struct flag
+{
+	int plus;
+	int space;
+	int hash;
+} flag_t;
+
 int print_char(va_list args);
 int print_string(va_list args);
 int print_percent(va_list args);
@@ -41,5 +54,6 @@ int print_ascii_hex(va_list args);
 int print_pointer(va_list args);
 int print_strev(va_list args);
 int print_rot13(va_list args);
+int print_flag(char c, flag_t *f);
 
 #endif
